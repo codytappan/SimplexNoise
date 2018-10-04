@@ -1,0 +1,3 @@
+[submodule "site_scons/site_tools/qt5"]
+	path = site_scons/site_tools/qt5
+	url = git@github.com:codytappan/SconsQt5.git
