@@ -1,0 +1,14 @@
+import os
+
+Import('env')
+
+localEnv = env.Clone()
+
+localEnv.Program('simplex_noise','main.cpp',
+             LIBS=['qtgui',
+                    'Qt5Core',
+                    'Qt5Widgets',
+                    'Qt5Gui'],
+
+             LIBPATH= [ 'qt',
+                         os.path.join(env['QT5DIR'], 'lib') ])
