@@ -1,6 +1,6 @@
 #include "image/bitmap.h"
 #include "noise/simplexnoise1234.h"
-#include "mainwindow.h"
+#include "qt/mainwindow.h"
 
 #include <QApplication>
 
