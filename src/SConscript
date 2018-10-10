@@ -2,13 +2,22 @@ import os
 
 Import('env')
 
-localEnv = env.Clone()
+env['QT5DIR'] = '/home/cody/Qt/5.12.0/gcc_64'
+env['ENV']['PKG_CONFIG_PATH'] = '/home/cody/Qt/5.12.0/gcc_64/lib/pkgconfig'
 
-localEnv.Program('simplex_noise','main.cpp',
-             LIBS=['qtgui',
-                    'Qt5Core',
-                    'Qt5Widgets',
-                    'Qt5Gui'],
+# Add qt5 tool
+env.Tool('qt5')
+env.EnableQt5Modules([
+    'QtGui',
+    'QtCore',
+    'QtWidgets'
+])
 
-             LIBPATH= [ 'qt',
-                         os.path.join(env['QT5DIR'], 'lib') ])
+sources = [
+    'main.cpp',
+    Glob('image/*.cpp'),
+    Glob('noise/*.cpp'),
+    Glob('qt/*.cpp'),
+]
+
+env.Program('#/bin/simplex_noise', sources)
